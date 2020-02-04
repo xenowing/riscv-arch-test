@@ -11,10 +11,11 @@ pipe:= |
 empty:=
 space:= $(empty) $(empty)
 
-export RISCV_TARGET       ?= riscvOVPsim
+export RISCV_TARGET       ?= marv
 export RISCV_DEVICE       ?= rv32i
 export RISCV_PREFIX       ?= riscv64-unknown-elf-
 export RISCV_TARGET_FLAGS ?=
+export RISCV_ISA          ?= rv32i
 
 RISCV_ISA_ALL = $(shell ls $(ROOTDIR)/riscv-target/$(RISCV_TARGET)/device)
 RISCV_ISA_OPT = $(subst $(space),$(pipe),$(RISCV_ISA_ALL))
@@ -86,7 +87,7 @@ clean:
 
 help:
 	@echo "eg, make"
-	@echo "RISCV_TARGET='riscvOVPsim|spike|sid32'"
+	@echo "RISCV_TARGET='marv|riscvOVPsim|spike|sid32'"
 	@echo "RISCV_TARGET_FLAGS="
 	@echo "RISCV_DEVICE='rv32i|rv32im|...'"
 	@echo "RISCV_ISA='$(RISCV_ISA_OPT)'"
